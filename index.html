@@ -91,9 +91,8 @@
 
 <nav>
   <ul>
-    <li><a href="#works" class="active">作品 Works</a></li>
-    <li><a href="#about">關於 About</a></li>
-    <li><a href="#upload">上傳 Upload</a></li>
+    <li><a href="#gzbank" class="active" data-main="gzbank">廣州銀行</a></li>
+    <li><a href="#others" data-main="others">其他</a></li>
   </ul>
 </nav>
 
@@ -104,11 +103,6 @@
   </section>
 
   <section id="works">
-    <div class="main-tabs">
-      <button class="tab-btn active" data-main="gzbank">廣州銀行 Guangzhou Bank</button>
-      <button class="tab-btn" data-main="others">其他 Others</button>
-    </div>
-
     <div id="gzbank-section">
       <div class="sub-tabs">
         <button class="sub-tab-btn active" data-sub="posters">長圖及海報 Long Images & Posters</button>
@@ -390,11 +384,11 @@ function showSection() {
   document.getElementById("aivideo-grid").classList.toggle("hidden", currentSub !== "aivideo");
 }
 
-document.querySelectorAll(".tab-btn").forEach(btn => {
+document.querySelectorAll("nav a").forEach(btn => {
   btn.addEventListener("click", () => {
-    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll("nav a").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
-    currentMain = btn.dataset.main;
+    currentMain = btn.dataset.main || "gzbank";
     showSection();
   });
 });
